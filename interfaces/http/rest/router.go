@@ -38,8 +38,8 @@ var (
 
 // InitRouter initializes main routes
 func (router *router) InitRouter() *chi.Mux {
-	// DI assignment
-	tenantQueryController := interfaces.ServiceContainer().RegisterTenantRESTQueryController()
+	// ID assignment
+	userCommandController := interfaces.ServiceContainer().RegisterUserRESTCommandController()
 
 	// create router
 	r := chi.NewRouter()
@@ -65,9 +65,11 @@ func (router *router) InitRouter() *chi.Mux {
 	// API routes
 	r.Group(func(r chi.Router) {
 		r.Route("/api", func(r chi.Router) {
-			r.Route("/v1", func(r chi.Router) {
-				// public routes
-				r.Get("/tenant/{id}", tenantQueryController.GetTenantByID)
+			// routes for user
+			r.Route("/user", func(r chi.Router) {
+				r.Post("/", userCommandController.CreateUser)
+				r.Delete("/{id}", userCommandController.DeleteUserByID)
+				r.Patch("/{id}", userCommandController.UpdateUserByID)
 			})
 		})
 	})

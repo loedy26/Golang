@@ -17,7 +17,6 @@ import (
 
 	"github.com/joho/godotenv"
 
-	"golang-api/interfaces/http/grpc"
 	"golang-api/interfaces/http/rest"
 )
 
@@ -48,9 +47,5 @@ func main() {
 	}
 
 	// serve rest server
-	go rest.ChiRouter().Serve(restPort)
-
-	// serve grpc server
-	grpc.GRPCServer().Serve(grpcPort)
-
+	rest.ChiRouter().Serve(restPort)
 }

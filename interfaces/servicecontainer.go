@@ -1,12 +1,3 @@
-/*
-|--------------------------------------------------------------------------
-| Service Container
-|--------------------------------------------------------------------------
-|
-| This file performs the compiled dependency injection for your middlewares,
-| controllers, services, providers, repositories, etc..
-|
-*/
 package interfaces
 
 import (
@@ -16,16 +7,16 @@ import (
 
 	"golang-api/infrastructures/database/mysql"
 
-	tenantRepository "golang-api/module/tenant/infrastructure/repository"
-	tenantService "golang-api/module/tenant/infrastructure/service"
-	tenantREST "golang-api/module/tenant/interfaces/http/rest"
+	userRepository "golang-api/module/user/infrastructure/repository"
+	userService "golang-api/module/user/infrastructure/service"
+	userREST "golang-api/module/user/interfaces/http/rest"
 )
 
 // ServiceContainerInterface contains the dependency injected instances
 type ServiceContainerInterface interface {
-
 	// REST
-	RegisterTenantRESTQueryController() tenantREST.TenantQueryController
+	RegisterUserRESTCommandController() userREST.UserCommandController
+	// RegisterUserRESTQueryController() userREST.UserQueryController
 }
 
 type kernel struct{}
@@ -37,33 +28,60 @@ var (
 	mysqlDBHandler *mysql.MySQLDBHandler
 )
 
-//================================= REST ===================================
-// RegisterTenantRESTQueryController performs dependency injection to the RegisterTenantRESTQueryController
-func (k *kernel) RegisterTenantRESTQueryController() tenantREST.TenantQueryController {
-	service := k.tenantQueryServiceContainer()
+//==========================================================================
 
-	controller := tenantREST.TenantQueryController{
-		TenantQueryServiceInterface: service,
+//================================= REST ===================================
+// ===============================================USER===============================================
+// RegisterUserRESTCommandController performs dependency injection to the RegisterUserRESTCommandController
+func (k *kernel) RegisterUserRESTCommandController() userREST.UserCommandController {
+	service := k.userCommandServiceContainer()
+
+	controller := userREST.UserCommandController{
+		UserCommandServiceInterface: service,
 	}
 
 	return controller
 }
 
-//==========================================================================
+// RegisterUserRESTQueryController performs dependency injection to the RegisterUserRESTQueryController
+// func (k *kernel) RegisterUserRESTQueryController() userREST.UserQueryController {
+// 	service := k.userQueryServiceContainer()
 
-func (k *kernel) tenantQueryServiceContainer() *tenantService.TenantQueryService {
-	repository := &tenantRepository.TenantQueryRepository{
+// 	controller := userREST.UserQueryController{
+// 		UserQueryServiceInterface: service,
+// 	}
+
+// 	return controller
+// }
+
+// ===============================================USER===============================================
+func (k *kernel) userCommandServiceContainer() *userService.UserCommandService {
+	repository := &userRepository.UserCommandRepository{
 		MySQLDBHandlerInterface: mysqlDBHandler,
 	}
 
-	service := &tenantService.TenantQueryService{
-		TenantQueryRepositoryInterface: &tenantRepository.TenantQueryRepositoryCircuitBreaker{
-			TenantQueryRepositoryInterface: repository,
+	service := &userService.UserCommandService{
+		UserCommandRepositoryInterface: &userRepository.UserCommandRepositoryCircuitBreaker{
+			UserCommandRepositoryInterface: repository,
 		},
 	}
 
 	return service
 }
+
+// func (k *kernel) userQueryServiceContainer() *userService.UserQueryService {
+// 	repository := &userRepository.UserQueryRepository{
+// 		MySQLDBHandlerInterface: mysqlDBHandler,
+// 	}
+
+// 	service := &userService.UserQueryService{
+// 		UserQueryRepositoryInterface: &userRepository.UserQueryRepositoryCircuitBreaker{
+// 			UserQueryRepositoryInterface: repository,
+// 		},
+// 	}
+
+// 	return service
+// }
 
 func registerHandlers() {
 	// create new mysql database connection
