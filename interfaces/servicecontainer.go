@@ -16,7 +16,7 @@ import (
 type ServiceContainerInterface interface {
 	// REST
 	RegisterUserRESTCommandController() userREST.UserCommandController
-	// RegisterUserRESTQueryController() userREST.UserQueryController
+	RegisterUserRESTQueryController() userREST.UserQueryController
 }
 
 type kernel struct{}
@@ -44,15 +44,15 @@ func (k *kernel) RegisterUserRESTCommandController() userREST.UserCommandControl
 }
 
 // RegisterUserRESTQueryController performs dependency injection to the RegisterUserRESTQueryController
-// func (k *kernel) RegisterUserRESTQueryController() userREST.UserQueryController {
-// 	service := k.userQueryServiceContainer()
+func (k *kernel) RegisterUserRESTQueryController() userREST.UserQueryController {
+	service := k.userQueryServiceContainer()
 
-// 	controller := userREST.UserQueryController{
-// 		UserQueryServiceInterface: service,
-// 	}
+	controller := userREST.UserQueryController{
+		UserQueryServiceInterface: service,
+	}
 
-// 	return controller
-// }
+	return controller
+}
 
 // ===============================================USER===============================================
 func (k *kernel) userCommandServiceContainer() *userService.UserCommandService {
@@ -69,19 +69,19 @@ func (k *kernel) userCommandServiceContainer() *userService.UserCommandService {
 	return service
 }
 
-// func (k *kernel) userQueryServiceContainer() *userService.UserQueryService {
-// 	repository := &userRepository.UserQueryRepository{
-// 		MySQLDBHandlerInterface: mysqlDBHandler,
-// 	}
+func (k *kernel) userQueryServiceContainer() *userService.UserQueryService {
+	repository := &userRepository.UserQueryRepository{
+		MySQLDBHandlerInterface: mysqlDBHandler,
+	}
 
-// 	service := &userService.UserQueryService{
-// 		UserQueryRepositoryInterface: &userRepository.UserQueryRepositoryCircuitBreaker{
-// 			UserQueryRepositoryInterface: repository,
-// 		},
-// 	}
+	service := &userService.UserQueryService{
+		UserQueryRepositoryInterface: &userRepository.UserQueryRepositoryCircuitBreaker{
+			UserQueryRepositoryInterface: repository,
+		},
+	}
 
-// 	return service
-// }
+	return service
+}
 
 func registerHandlers() {
 	// create new mysql database connection
