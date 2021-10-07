@@ -17,7 +17,7 @@ import (
 
 	"github.com/joho/godotenv"
 
-	"golang-api/interfaces/http/rest"
+	"server-api/interfaces/http/rest"
 )
 
 func init() {

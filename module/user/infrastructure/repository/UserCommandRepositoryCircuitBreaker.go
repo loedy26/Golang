@@ -3,10 +3,10 @@ package repository
 import (
 	"github.com/afex/hystrix-go/hystrix"
 
-	hystrix_config "golang-api/configs/hystrix"
-	"golang-api/module/user/domain/entity"
-	"golang-api/module/user/domain/repository"
-	repositoryTypes "golang-api/module/user/infrastructure/repository/types"
+	hystrix_config "server-api/configs/hystrix"
+	"server-api/module/user/domain/entity"
+	"server-api/module/user/domain/repository"
+	repositoryTypes "server-api/module/user/infrastructure/repository/types"
 )
 
 // UserCommandRepositoryCircuitBreaker circuit breaker for user command repository

@@ -3,8 +3,8 @@ package application
 import (
 	"context"
 
-	"golang-api/module/user/domain/entity"
-	"golang-api/module/user/infrastructure/service/types"
+	"server-api/module/user/domain/entity"
+	"server-api/module/user/infrastructure/service/types"
 )
 
 // UserCommandServiceInterface holds the implementable method for the user command service

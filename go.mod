@@ -1,4 +1,4 @@
-module golang-api
+module server-api
 
 go 1.14
 

@@ -5,11 +5,11 @@ import (
 	"os"
 	"sync"
 
-	"golang-api/infrastructures/database/mysql"
+	"server-api/infrastructures/database/mysql"
 
-	userRepository "golang-api/module/user/infrastructure/repository"
-	userService "golang-api/module/user/infrastructure/service"
-	userREST "golang-api/module/user/interfaces/http/rest"
+	userRepository "server-api/module/user/infrastructure/repository"
+	userService "server-api/module/user/infrastructure/service"
+	userREST "server-api/module/user/interfaces/http/rest"
 )
 
 // ServiceContainerInterface contains the dependency injected instances

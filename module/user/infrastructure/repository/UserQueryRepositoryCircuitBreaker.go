@@ -3,9 +3,9 @@ package repository
 import (
 	"github.com/afex/hystrix-go/hystrix"
 
-	"golang-api/module/user/domain/entity"
-	"golang-api/module/user/domain/repository"
-	repositoryTypes "golang-api/module/user/infrastructure/repository/types"
+	"server-api/module/user/domain/entity"
+	"server-api/module/user/domain/repository"
+	repositoryTypes "server-api/module/user/infrastructure/repository/types"
 )
 
 // UserQueryRepositoryCircuitBreaker is the circuit breaker for the user query repository

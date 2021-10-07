@@ -18,9 +18,9 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 
-	"golang-api/interfaces"
-	"golang-api/interfaces/http/rest/middlewares/cors"
-	"golang-api/interfaces/http/rest/viewmodels"
+	"server-api/interfaces"
+	"server-api/interfaces/http/rest/middlewares/cors"
+	"server-api/interfaces/http/rest/viewmodels"
 )
 
 // ChiRouterInterface declares methods for the chi router

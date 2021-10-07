@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"strings"
 
-	"golang-api/infrastructures/database/mysql/types"
-	apiError "golang-api/internal/errors"
-	"golang-api/module/user/domain/entity"
-	repositoryTypes "golang-api/module/user/infrastructure/repository/types"
+	"server-api/infrastructures/database/mysql/types"
+	apiError "server-api/internal/errors"
+	"server-api/module/user/domain/entity"
+	repositoryTypes "server-api/module/user/infrastructure/repository/types"
 )
 
 // UserCommandRepository handles the user command repository logic

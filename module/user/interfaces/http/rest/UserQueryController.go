@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"strconv"
 
-	"golang-api/interfaces/http/rest/viewmodels"
-	"golang-api/internal/errors"
-	"golang-api/module/user/application"
-	serviceTypes "golang-api/module/user/infrastructure/service/types"
-	types "golang-api/module/user/interfaces/http"
+	"server-api/interfaces/http/rest/viewmodels"
+	"server-api/internal/errors"
+	"server-api/module/user/application"
+	serviceTypes "server-api/module/user/infrastructure/service/types"
+	types "server-api/module/user/interfaces/http"
 
 	"github.com/go-chi/chi"
 )

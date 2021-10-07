@@ -3,7 +3,7 @@ package cors
 import (
 	"github.com/go-chi/cors"
 
-	corsConfig "golang-api/configs/cors"
+	corsConfig "server-api/configs/cors"
 )
 
 // Init initializes the CORS configuration

@@ -3,10 +3,10 @@ package service
 import (
 	"context"
 
-	"golang-api/module/user/domain/entity"
-	"golang-api/module/user/domain/repository"
-	repositoryTypes "golang-api/module/user/infrastructure/repository/types"
-	"golang-api/module/user/infrastructure/service/types"
+	"server-api/module/user/domain/entity"
+	"server-api/module/user/domain/repository"
+	repositoryTypes "server-api/module/user/infrastructure/repository/types"
+	"server-api/module/user/infrastructure/service/types"
 )
 
 // UserCommandService handles the user command service logic
