@@ -2,9 +2,9 @@ package types
 
 // CreateUser create service type for user
 type CreateUser struct {
-	FirstName     string
-	LastName      string
-	ContactNumber string
+	FirstName    string
+	LastName     string
+	MobileNumber string
 }
 
 // GetUser get service type for user
@@ -14,8 +14,8 @@ type GetUser struct {
 
 // UpdateUser update service type for user
 type UpdateUser struct {
-	ID            int
-	FirstName     string
-	LastName      string
-	ContactNumber string
+	ID           int
+	FirstName    string
+	LastName     string
+	MobileNumber string
 }

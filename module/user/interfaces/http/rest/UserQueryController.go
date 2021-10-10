@@ -50,12 +50,12 @@ func (controller *UserQueryController) GetUsers(w http.ResponseWriter, r *http.R
 
 	for _, user := range res {
 		users = append(users, types.UserResponse{
-			ID:            user.ID,
-			FirstName:     user.FirstName,
-			LastName:      user.LastName,
-			ContactNumber: user.ContactNumber,
-			CreatedAt:     user.CreatedAt.Unix(),
-			UpdatedAt:     user.UpdatedAt.Unix(),
+			ID:           user.ID,
+			FirstName:    user.FirstName,
+			LastName:     user.LastName,
+			MobileNumber: user.MobileNumber,
+			CreatedAt:    user.CreatedAt.Unix(),
+			UpdatedAt:    user.UpdatedAt.Unix(),
 		})
 	}
 	response := viewmodels.HTTPResponseVM{
@@ -118,12 +118,12 @@ func (controller *UserQueryController) GetUserByID(w http.ResponseWriter, r *htt
 		Success: true,
 		Message: "Successfully fetched user data.",
 		Data: &types.UserResponse{
-			ID:            res.ID,
-			FirstName:     res.FirstName,
-			LastName:      res.LastName,
-			ContactNumber: res.ContactNumber,
-			CreatedAt:     res.CreatedAt.Unix(),
-			UpdatedAt:     res.UpdatedAt.Unix(),
+			ID:           res.ID,
+			FirstName:    res.FirstName,
+			LastName:     res.LastName,
+			MobileNumber: res.MobileNumber,
+			CreatedAt:    res.CreatedAt.Unix(),
+			UpdatedAt:    res.UpdatedAt.Unix(),
 		},
 	}
 

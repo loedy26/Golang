@@ -20,7 +20,7 @@ func (service *UserCommandService) CreateUser(ctx context.Context, data types.Cr
 
 	user.FirstName = data.FirstName
 	user.LastName = data.LastName
-	user.ContactNumber = data.ContactNumber
+	user.MobileNumber = data.MobileNumber
 
 	res, err := service.UserCommandRepositoryInterface.InsertUser(user)
 	if err != nil {
@@ -47,7 +47,7 @@ func (service *UserCommandService) UpdateUserByID(ctx context.Context, data type
 	user.ID = data.ID
 	user.FirstName = data.FirstName
 	user.LastName = data.LastName
-	user.ContactNumber = data.ContactNumber
+	user.MobileNumber = data.MobileNumber
 
 	res, err := service.UserCommandRepositoryInterface.UpdateUserByID(user)
 	if err != nil {

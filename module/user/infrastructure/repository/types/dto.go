@@ -2,10 +2,10 @@ package types
 
 // CreateUser create repository types for user
 type CreateUser struct {
-	ID            int
-	FirstName     string
-	LastName      string
-	ContactNumber string
+	ID           int
+	FirstName    string
+	LastName     string
+	MobileNumber string
 }
 
 // GetUser get repository types for user
@@ -15,8 +15,8 @@ type GetUser struct {
 
 // UpdateUser update repository types for user
 type UpdateUser struct {
-	ID            int
-	FirstName     string
-	LastName      string
-	ContactNumber string
+	ID           int
+	FirstName    string
+	LastName     string
+	MobileNumber string
 }

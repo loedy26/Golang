@@ -35,15 +35,16 @@ func (repository *UserCommandRepository) DeleteUserByID(userID int) error {
 // InsertUser creates a new user resource
 func (repository *UserCommandRepository) InsertUser(data repositoryTypes.CreateUser) (entity.User, error) {
 	user := &entity.User{
-		FirstName:     data.FirstName,
-		LastName:      data.LastName,
-		ContactNumber: data.ContactNumber,
+		FirstName:    data.FirstName,
+		LastName:     data.LastName,
+		MobileNumber: data.MobileNumber,
 	}
 
 	// insert user
-	stmt := fmt.Sprintf("INSERT INTO %s (first_name,last_name,contact_number)"+
-		"VALUES (:first_name,:last_name,:contact_number)", user.GetModelName())
+	stmt := fmt.Sprintf("INSERT INTO %s (first_name,last_name,mobile_number)"+
+		"VALUES (:first_name,:last_name,:mobile_number)", user.GetModelName())
 	res, err := repository.MySQLDBHandlerInterface.Execute(stmt, user)
+
 	if err != nil {
 		var errStr string
 
@@ -66,14 +67,14 @@ func (repository *UserCommandRepository) InsertUser(data repositoryTypes.CreateU
 // UpdateUserByID update resource
 func (repository *UserCommandRepository) UpdateUserByID(data repositoryTypes.UpdateUser) (entity.User, error) {
 	user := &entity.User{
-		ID:            data.ID,
-		FirstName:     data.FirstName,
-		LastName:      data.LastName,
-		ContactNumber: data.ContactNumber,
+		ID:           data.ID,
+		FirstName:    data.FirstName,
+		LastName:     data.LastName,
+		MobileNumber: data.MobileNumber,
 	}
 
 	// update user
-	stmt := fmt.Sprintf("UPDATE %s SET first_name=:first_name,last_name=:last_name,contact_number=:contact_number "+
+	stmt := fmt.Sprintf("UPDATE %s SET first_name=:first_name,last_name=:last_name,mobile_number=:mobile_number "+
 		"WHERE id=:id", user.GetModelName())
 	_, err := repository.MySQLDBHandlerInterface.Execute(stmt, user)
 	if err != nil {

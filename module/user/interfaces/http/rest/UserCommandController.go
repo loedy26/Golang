@@ -52,7 +52,7 @@ func (controller *UserCommandController) CreateUser(w http.ResponseWriter, r *ht
 
 	user.FirstName = request.FirstName
 	user.LastName = request.LastName
-	user.ContactNumber = request.ContactNumber
+	user.MobileNumber = request.MobileNumber
 
 	res, err := controller.UserCommandServiceInterface.CreateUser(context.TODO(), user)
 	if err != nil {
@@ -87,11 +87,11 @@ func (controller *UserCommandController) CreateUser(w http.ResponseWriter, r *ht
 		Success: true,
 		Message: "User successfully created.",
 		Data: &types.CreateUserResponse{
-			FirstName:     res.FirstName,
-			LastName:      res.LastName,
-			ContactNumber: res.ContactNumber,
-			CreatedAt:     time.Now().Unix(),
-			UpdatedAt:     time.Now().Unix(),
+			FirstName:    res.FirstName,
+			LastName:     res.LastName,
+			MobileNumber: res.MobileNumber,
+			CreatedAt:    time.Now().Unix(),
+			UpdatedAt:    time.Now().Unix(),
 		},
 	}
 
@@ -171,7 +171,7 @@ func (controller *UserCommandController) UpdateUserByID(w http.ResponseWriter, r
 
 	user.FirstName = request.FirstName
 	user.LastName = request.LastName
-	user.ContactNumber = request.ContactNumber
+	user.MobileNumber = request.MobileNumber
 
 	res, err := controller.UserCommandServiceInterface.UpdateUserByID(context.TODO(), user)
 	if err != nil {
@@ -203,10 +203,10 @@ func (controller *UserCommandController) UpdateUserByID(w http.ResponseWriter, r
 		Success: true,
 		Message: "User successfully updated.",
 		Data: &types.UpdateUserResponse{
-			ID:            res.ID,
-			FirstName:     res.FirstName,
-			LastName:      res.LastName,
-			ContactNumber: res.ContactNumber,
+			ID:           res.ID,
+			FirstName:    res.FirstName,
+			LastName:     res.LastName,
+			MobileNumber: res.MobileNumber,
 		},
 	}
 
