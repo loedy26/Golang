@@ -53,6 +53,7 @@ func (controller *UserCommandController) CreateUser(w http.ResponseWriter, r *ht
 	user.FirstName = request.FirstName
 	user.LastName = request.LastName
 	user.MobileNumber = request.MobileNumber
+	user.Password = request.Password
 
 	res, err := controller.UserCommandServiceInterface.CreateUser(context.TODO(), user)
 	if err != nil {
@@ -172,6 +173,7 @@ func (controller *UserCommandController) UpdateUserByID(w http.ResponseWriter, r
 	user.FirstName = request.FirstName
 	user.LastName = request.LastName
 	user.MobileNumber = request.MobileNumber
+	user.Password = request.Password
 
 	res, err := controller.UserCommandServiceInterface.UpdateUserByID(context.TODO(), user)
 	if err != nil {

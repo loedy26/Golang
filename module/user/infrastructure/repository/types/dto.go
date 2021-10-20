@@ -6,6 +6,7 @@ type CreateUser struct {
 	FirstName    string
 	LastName     string
 	MobileNumber string
+	Password     string
 }
 
 // GetUser get repository types for user
@@ -19,4 +20,5 @@ type UpdateUser struct {
 	FirstName    string
 	LastName     string
 	MobileNumber string
+	Password     string
 }

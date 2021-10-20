@@ -13,6 +13,7 @@ type User struct {
 	Metadata     string
 	CreatedAt    time.Time `db:"created_at"`
 	UpdatedAt    time.Time `db:"updated_at"`
+	Password     string
 }
 
 // GetModelName returns the model name of academic year entity that can be used for naming schemas

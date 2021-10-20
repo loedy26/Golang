@@ -41,8 +41,8 @@ func (repository *UserCommandRepository) InsertUser(data repositoryTypes.CreateU
 	}
 
 	// insert user
-	stmt := fmt.Sprintf("INSERT INTO %s (first_name,last_name,mobile_number)"+
-		"VALUES (:first_name,:last_name,:mobile_number)", user.GetModelName())
+	stmt := fmt.Sprintf("INSERT INTO %s (first_name,last_name,mobile_number,password)"+
+		"VALUES (:first_name,:last_name,:mobile_number,:password)", user.GetModelName())
 	res, err := repository.MySQLDBHandlerInterface.Execute(stmt, user)
 
 	if err != nil {
@@ -74,7 +74,7 @@ func (repository *UserCommandRepository) UpdateUserByID(data repositoryTypes.Upd
 	}
 
 	// update user
-	stmt := fmt.Sprintf("UPDATE %s SET first_name=:first_name,last_name=:last_name,mobile_number=:mobile_number "+
+	stmt := fmt.Sprintf("UPDATE %s SET first_name=:first_name,last_name=:last_name,mobile_number=:mobile_number,password=:password "+
 		"WHERE id=:id", user.GetModelName())
 	_, err := repository.MySQLDBHandlerInterface.Execute(stmt, user)
 	if err != nil {

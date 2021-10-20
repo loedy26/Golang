@@ -13,10 +13,12 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"sync"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
+	"github.com/go-chi/jwtauth"
 
 	"server-api/interfaces"
 	"server-api/interfaces/http/rest/middlewares/cors"
@@ -65,6 +67,10 @@ func (router *router) InitRouter() *chi.Mux {
 
 	// API routes
 	r.Group(func(r chi.Router) {
+		// set jwt verifier
+		tokenAuth := jwtauth.New("HS256", []byte(os.Getenv("JWT_SECRET")), nil)
+		r.Use(jwtauth.Verifier(tokenAuth))
+
 		r.Route("/api", func(r chi.Router) {
 			// routes for user
 			r.Route("/user", func(r chi.Router) {
@@ -73,7 +79,7 @@ func (router *router) InitRouter() *chi.Mux {
 				r.Patch("/{id}", userCommandController.UpdateUserByID)
 				r.Get("/{id}", userQueryController.GetUserByID)
 			})
-			// r.Get("/users/", userQueryController.GetUsers)
+			r.Get("/users/", userQueryController.GetUsers)
 		})
 	})
 

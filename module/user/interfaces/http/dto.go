@@ -5,6 +5,7 @@ type CreateUserRequest struct {
 	FirstName    string `json:"firstName"`
 	LastName     string `json:"lastName"`
 	MobileNumber string `json:"mobileNumber"`
+	Password     string `json:"password"`
 }
 
 // CreateUserResponse response type for create user
@@ -31,6 +32,7 @@ type UpdateUserRequest struct {
 	FirstName    string `json:"firstName"`
 	LastName     string `json:"lastName"`
 	MobileNumber string `json:"mobileNumber"`
+	Password     string `json:"password"`
 }
 
 // UpdateUserResponse Response type for update user

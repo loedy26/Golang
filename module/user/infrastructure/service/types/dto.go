@@ -5,6 +5,7 @@ type CreateUser struct {
 	FirstName    string
 	LastName     string
 	MobileNumber string
+	Password     string
 }
 
 // GetUser get service type for user
@@ -18,4 +19,5 @@ type UpdateUser struct {
 	FirstName    string
 	LastName     string
 	MobileNumber string
+	Password     string
 }
